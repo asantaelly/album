@@ -1,0 +1,57 @@
+ * {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial;
+}
+
+body {
+    margin: 0;
+    font-family: Arial;
+}
+
+img {
+    padding: 4px!important;
+}
+
+.custom-row {
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    -ms-flex-wrap: wrap; /* IE10 */
+    flex-wrap: wrap;
+    padding: 0 4px!important;
+}
+
+/* Create four equal columns that sits next to each other */
+.custom-column {
+    -ms-flex: 33%; /* IE10 */
+    flex: 33%;
+    max-width: 33%;
+    padding: 4px!important;
+}
+
+.custom-column img {
+    margin-top: 8px;
+    vertical-align: middle;
+    height: 250px;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+    .custom-column {
+        -ms-flex: 50%;
+        flex: 50%;
+        max-width: 50%;
+    }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+    .custom-column {
+        -ms-flex: 100%;
+        flex: 100%;
+        max-width: 100%;
+    }
+}
