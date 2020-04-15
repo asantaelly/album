@@ -1,0 +1,13 @@
+<link rel="stylesheet" href="../public/css/image.css">
+<div class="container image-container px-0">
+    <div class="row">
+        {{#each data}}
+                <div class="column">
+                        <img 
+                        srcset="{{this.image_340}} 1x, {{this.image_480}} 2x" class=""
+                        src="{{this.image}}" 
+                        alt="{{this.description}}">
+                </div>
+        {{/each}}
+    </div>
+</div>

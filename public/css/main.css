@@ -1,0 +1,39 @@
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  /* color: #2c3e50; */
+  margin-top: 60px;
+}
+
+body {
+  background-color:#E7F0ED!important;
+}
+
+.navbar-custom {
+  background-color: transparent!important;
+  /* opacity: 1!important; */
+  color: white!important;
+}
+
+.jumbo-size {
+  height: 500px;
+  text-align: center;
+  margin-right: 0px;
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-image: url('../cover_image/4.jpeg');
+}
+
+
+.jumbo-header {
+  margin-top: 50px;
+}
+
+.search {
+  width: 50%!important;
+  margin-left: 25%;
+  color: black!important;
+  font-size: 20px!important;
+}
