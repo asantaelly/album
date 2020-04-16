@@ -1,25 +1,32 @@
 const connection = require('../env');
-const magick = require('imagemagick');
 const jwt = require('jsonwebtoken');
+
+
+exports.registration_form = (req, res, next) => {
+    res.json({
+        message: 'Registration form',
+    })
+}
 
 exports.user_registration = (req, res, next) => {
     let time = new Date();
     let userData = {
-        first_name: req.body.firstName,
-        last_name: req.body.lastName,
+        name: req.body.name,
         email: req.body.email,
         password: req.body.password,
         created_at: time
     }
 
-    let query_string = 'INSERT INTO graphers SET ?';
+    let query_string = 'INSERT INTO users SET ?';
     connection.query(query_string, [userData], (err, rows, fields) => {
         if (err) throw err
             res.json({
-                message: 'User Created Successfully'
+                message: 'User Created Successfully',
+                user: userData
             });
     });
 }
+
 
 exports.user_login = (req, res, next) => {
     
