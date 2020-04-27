@@ -17,18 +17,14 @@ exports.user_registration = (req, res, next) => {
         created_at: time
     }
 
-    res.json({
-        request: req.body,
+    let query_string = 'INSERT INTO users SET ?';
+    connection.query(query_string, [userData], (err, rows, fields) => {
+        if (err) throw err
+            res.json({
+                message: 'User Created Successfully',
+                user: userData
+            });
     });
-
-    // let query_string = 'INSERT INTO users SET ?';
-    // connection.query(query_string, [userData], (err, rows, fields) => {
-    //     if (err) throw err
-    //         res.json({
-    //             message: 'User Created Successfully',
-    //             user: userData
-    //         });
-    // });
 }
 
 
