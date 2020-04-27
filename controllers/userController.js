@@ -2,12 +2,20 @@ const connection = require('../env');
 const jwt = require('jsonwebtoken');
 
 
+/**
+ *  User registration form
+ */
 exports.registration_form = (req, res, next) => {
     res.json({
         message: 'Registration form',
     })
 }
 
+
+
+/**
+ *  Store new user to the database
+ */
 exports.user_registration = (req, res, next) => {
     let time = new Date();
     let userData = {
@@ -21,13 +29,16 @@ exports.user_registration = (req, res, next) => {
     connection.query(query_string, [userData], (err, rows, fields) => {
         if (err) throw err
             res.json({
-                message: 'User Created Successfully',
+                message: 'user created successfully',
                 user: userData
             });
     });
 }
 
 
+/**
+ *   Authenticate a user 
+ */
 exports.user_login = (req, res, next) => {
     
     let token = null;
