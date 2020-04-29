@@ -82,6 +82,20 @@ exports.post_image = (req, res) => {
  */
 exports.delete_image = (req, res) => {
 
+    let photo_id = req.params.photoID;
+    
+    let delete_query = 'DELETE FROM photos WHERE id = ?';
+    connection.query(delete_query, [photo_id], (err, rows, fields) => {
+
+        if(err) return console.log(err);
+
+        return res.json({
+            Message: 'Photo deleted successfully',
+            Photo: rows,
+        });
+
+    });
+
 }
 
 

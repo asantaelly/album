@@ -15,5 +15,8 @@ router.get('/photos', images_controller.show_images);
 // Get only one photo
 router.get('/photos/:photoID', images_controller.show_image);
 
+// Delete a photo
+router.delete('/photos/:photoID', images_controller.delete_image);
+
 
 module.exports = router;
