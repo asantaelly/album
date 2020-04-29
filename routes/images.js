@@ -18,5 +18,8 @@ router.get('/photos/:photoID', images_controller.show_image);
 // Delete a photo
 router.delete('/photos/:photoID', images_controller.delete_image);
 
+// Update a photo
+router.put('/photos/:photoID', upload.none(), images_controller.update_image);
+
 
 module.exports = router;

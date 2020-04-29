@@ -106,4 +106,17 @@ exports.delete_image = (req, res) => {
  */
 exports.update_image = (req, res) => {
     
+    let photo_id = req.params.photoID;
+    let description = req.body.description;
+
+    let update_query = 'UPDATE photos SET description = ? WHERE id = ?'; 
+    connection.query(update_query, [description, photo_id], (err, rows, fields) => {
+
+        if(err) return console.log(err);
+
+        return res.json({
+            Message: 'Photo updated successfully',
+            photo: rows,
+        });
+    });
 }
