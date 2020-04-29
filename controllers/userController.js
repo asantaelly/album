@@ -37,6 +37,26 @@ exports.user_registration = (req, res, next) => {
 
 
 /**
+ * 
+ *   Return one user
+ */
+exports.get_user = (req, res, next) => {
+
+    let user_id = req.params.userID;
+
+    let fetch_query = 'SELECT * FROM users WHERE id = ?';
+    connection.query(fetch_query, [user_id], (err, rows, fields) => {
+        
+        if(err) return console.log(err);
+
+        return res.json({
+            User: rows,
+        });
+    });
+}
+
+
+/**
  *   Authenticate a user 
  */
 exports.user_login = (req, res, next) => {
