@@ -25,6 +25,17 @@ exports.show_images = (req, res, next) => {
  *  Return only one image
  */
 exports.show_image = (req, res, next) => {
+
+    let photo_id = req.params.photoID;
+
+    let fetch_query = 'SELECT * FROM photos WHERE id = ?';
+    connection.query(fetch_query, [photo_id], (err, rows, fields) => {
+        if(err) return console.log(err);
+
+        return res.json({
+            photo: rows,
+        })
+    })
     
 }
 

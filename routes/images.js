@@ -12,5 +12,8 @@ router.post('/upload_photo', upload.single('photo'), images_controller.post_imag
 // Get all photos
 router.get('/photos', images_controller.show_images);
 
+// Get only one photo
+router.get('/photos/:photoID', images_controller.show_image);
+
 
 module.exports = router;
