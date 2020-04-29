@@ -1,5 +1,6 @@
 const connection = require('../env');
 const jwt = require('jsonwebtoken');
+const time = new Date();
 
 
 /**
@@ -17,12 +18,13 @@ exports.registration_form = (req, res, next) => {
  *  Store new user to the database
  */
 exports.user_registration = (req, res, next) => {
-    let time = new Date();
+
     let userData = {
         name: req.body.name,
         email: req.body.email,
         password: req.body.password,
-        created_at: time
+        created_at: time,
+        update_at: time
     }
 
     let query_string = 'INSERT INTO users SET ?';
@@ -54,6 +56,34 @@ exports.get_user = (req, res, next) => {
         });
     });
 }
+
+
+/**
+ * 
+ *  Edit user instance
+ * 
+ */
+exports.edit_user = (req, res, next) => {
+
+    let user_id = req.params.userID;
+    let userCredentials = {
+        name: req.body.name,
+        email: req.body.email,
+        updated_at: time
+    }
+
+    let edit_query = 'UPDATE users SET ? WHERE id = ?';
+    connection.query(edit_query, [userCredentials, user_id], (err, rows, fields) => {
+
+        if(err) return console.log(err);
+
+        return res.json({
+            Message: 'User updated successfully',
+            User: rows,
+        })
+    })
+}
+
 
 
 /**

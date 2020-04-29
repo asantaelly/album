@@ -1,6 +1,5 @@
 const connection = require('../env');
-var multer = require('multer');
-var upload = multer({ des: '../public/picha/'});
+var time = new Date();
 
 
 
@@ -51,7 +50,6 @@ exports.post_image = (req, res) => {
         });
     }
 
-    let time = new Date();
     let picha = req.file;
     let photoDetails = {
         description: req.body.description,
@@ -107,10 +105,13 @@ exports.delete_image = (req, res) => {
 exports.update_image = (req, res) => {
     
     let photo_id = req.params.photoID;
-    let description = req.body.description;
+    let photoDetails = {
+        description: req.body.description,
+        updated_at: time,
+    }
 
-    let update_query = 'UPDATE photos SET description = ? WHERE id = ?'; 
-    connection.query(update_query, [description, photo_id], (err, rows, fields) => {
+    let update_query = 'UPDATE photos SET ? WHERE id = ?'; 
+    connection.query(update_query, [photoDetails, photo_id], (err, rows, fields) => {
 
         if(err) return console.log(err);
 
