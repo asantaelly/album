@@ -6,7 +6,11 @@ var upload = multer({ des: 'public/picha/'});
 
 var images_controller = require('../controllers/imageController');
 
+// Upload a photo
 router.post('/upload_photo', upload.single('photo'), images_controller.post_image);
+
+// Get all photos
+router.get('/photos', images_controller.show_images);
 
 
 module.exports = router;

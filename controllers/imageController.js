@@ -8,7 +8,17 @@ var upload = multer({ des: '../public/picha/'});
  *  Return all images
  */
 exports.show_images = (req, res, next) => {
-    
+
+    let query_string = 'SELECT * FROM photos';
+    connection.query(query_string, (err, rows, fields) => {
+        if(err) return console.log(err);
+
+        return res.json({
+            photos: rows,
+        })
+
+    });
+
 }
 
 /**
@@ -35,7 +45,7 @@ exports.post_image = (req, res) => {
     let photoDetails = {
         description: req.body.description,
         photo: 'public/picha/'+picha.originalname,
-        user_id: 1,                                         // id of user logged in and uploaded the particular picha will go here
+        user_id: 1,                                         // ID of user logged in and uploaded the particular picha will go here
         created_at: time,
         updated_at: time,
     }

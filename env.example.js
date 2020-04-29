@@ -1,11 +1,11 @@
 /**
- *   Settings for the setting of MySQL database 
+ *   MySQL Database Configuration Settings
  * 
- *   Fill the connection attribute with your database credentials
+ *   Fill the connection attributes with your database credentials
  *   "user", "password", "database"
  * 
  *   "Host" is set to "localhost" for local development 
- *   You can set is to production host url
+ *   Do not forget to change it when in Production
  */
 
 
