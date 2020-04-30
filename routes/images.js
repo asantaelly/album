@@ -1,7 +1,17 @@
 var express = require('express');
 var router = express.Router();
 var multer = require('multer');
-var upload = multer({ des: 'public/picha/'});
+
+
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, 'public/images/uploads');
+    },
+    filename: (req, file, cb) => {
+      cb(null, file.originalname);
+    }
+});
+var upload = multer({storage: storage});
 
 
 var images_controller = require('../controllers/imageController');

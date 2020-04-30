@@ -53,7 +53,7 @@ exports.post_image = (req, res) => {
     let picha = req.file;
     let photoDetails = {
         description: req.body.description,
-        photo: 'public/picha/'+picha.originalname,
+        photo: 'public/images/uploads/'+picha.originalname,
         user_id: 1,                                         // ID of user logged in and uploaded the particular picha will go here
         created_at: time,
         updated_at: time,

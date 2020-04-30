@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var multer = require('multer');
-var upload = multer({ des: 'public/picha/'});
+var upload = multer({ des: 'picha/'});
 
 
 
