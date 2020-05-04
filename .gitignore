@@ -1,3 +1,4 @@
 node_modules/
 env.js
 public/images/uploads/*
+database_setup.txt
