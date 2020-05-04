@@ -45,7 +45,7 @@ Then start local web server
 * [ExpressJS](https://expressjs.com/) - The web framework used
 * [MySQL](https://dev.mysql.com/doc/) - Database Engine used
 
-## Authors
+## Author
 
 * **Kelvin Shoo** - (https://github.com/wi11z)
 
