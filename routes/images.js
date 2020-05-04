@@ -1,8 +1,8 @@
-var express = require('express')
-var router = express.Router()
-var multer = require('multer')
+const express = require('express')
+const router = express.Router()
+const multer = require('multer')
 
-var storage = multer.diskStorage({
+const storage = multer.diskStorage({
 	destination: (req, file, cb) => {
 		cb(null, 'public/images/uploads')
 	},
@@ -10,9 +10,9 @@ var storage = multer.diskStorage({
 		cb(null, file.originalname)
 	},
 })
-var upload = multer({storage: storage})
+const upload = multer({ storage: storage })
 
-var images_controller = require('../controllers/imageController')
+const images_controller = require('../controllers/imageController')
 
 // Upload a photo
 router.post(

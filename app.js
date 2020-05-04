@@ -1,14 +1,16 @@
-var createError = require('http-errors')
-var express = require('express')
-var path = require('path')
-var cookieParser = require('cookie-parser')
-var logger = require('morgan')
-var hbs = require('express-handlebars')
+const createError = require('http-errors')
+const express = require('express')
+const path = require('path')
+const cookieParser = require('cookie-parser')
+const logger = require('morgan')
+const hbs = require('express-handlebars')
+const bodyParser = require('body-parser')
+const db = require('./database/mongodb')
 
-var indexRouter = require('./routes/index')
-var usersRouter = require('./routes/users')
-var imagesRouter = require('./routes/images')
-var favicon = require('serve-favicon')
+const indexRouter = require('./routes/index')
+const usersRouter = require('./routes/users')
+const imagesRouter = require('./routes/images')
+const favicon = require('serve-favicon')
 
 // eslint-disable-next-line no-undef
 const PROJECT_ROOT = __dirname
@@ -33,11 +35,15 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.use(express.static(path.join(PROJECT_ROOT, 'public')))
+app.use(bodyParser.json())
 
 app.use('/', indexRouter)
 app.use('/users', usersRouter)
 app.use('/images', imagesRouter)
 app.use(favicon(PROJECT_ROOT + '/public/favicon.ico'))
+
+// initialize connection to the database
+db.mongodb_connection()
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

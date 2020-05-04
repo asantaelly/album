@@ -1,9 +1,9 @@
-var express = require('express')
-var router = express.Router()
-var multer = require('multer')
-var upload = multer({ des: 'picha/' })
+const express = require('express')
+const router = express.Router()
+const multer = require('multer')
+const upload = multer({ des: 'picha/' })
 
-var user_controller = require('../controllers/userController')
+const user_controller = require('../controllers/userController')
 
 // User registration form view
 router.get('/', user_controller.registration_form)

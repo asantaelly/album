@@ -1,5 +1,6 @@
 const connection = require('../database/mysql')
 const jwt = require('jsonwebtoken')
+const User = require('../models/User')
 const time = new Date()
 
 /**
@@ -14,40 +15,36 @@ exports.registration_form = (req, res) => {
 /**
  *  Store new user to the database
  */
-exports.user_registration = (req, res) => {
-	let userData = {
+exports.user_registration = async (req, res) => {
+	const userData = new User({
 		name: req.body.name,
 		email: req.body.email,
 		password: req.body.password,
 		created_at: time,
 		update_at: time,
-	}
-
-	let query_string = 'INSERT INTO users SET ?'
-	connection.query(query_string, [userData], (err) => {
-		if (err) throw err
-		res.json({
-			message: 'user created successfully',
-			user: userData,
-		})
 	})
+
+	try {
+		const user = await userData.save()
+		res.json({ success: true, user: user })
+	} catch (error) {
+		res.json({ success: false, message: error })
+	}
 }
 
 /**
  *
  *   Return one user
  */
-exports.get_user = (req, res) => {
+exports.get_user = async (req, res) => {
 	let user_id = req.params.userID
 
-	let fetch_query = 'SELECT * FROM users WHERE id = ?'
-	connection.query(fetch_query, [user_id], (err, rows) => {
-		if (err) return console.log(err)
-
-		return res.json({
-			User: rows,
-		})
-	})
+	try {
+		const user = await User.findById(user_id)
+		res.json({ success: true, user: user })
+	} catch (error) {
+		res.json({ success: false, message: error })
+	}
 }
 
 /**
