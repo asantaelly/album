@@ -1,4 +1,4 @@
-const connection = require('../env')
+const connection = require('../database/mysql')
 var time = new Date()
 
 /**

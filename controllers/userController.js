@@ -1,4 +1,4 @@
-const connection = require('../env')
+const connection = require('../database/mysql')
 const jwt = require('jsonwebtoken')
 const time = new Date()
 
