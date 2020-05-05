@@ -9,10 +9,10 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 Things you need to install in order to run in your local development
-* Install NodeJS
-* Install MySQL and WebServer of your Choice
-* Install Postman 
 
+-   Install NodeJS
+-   Install MySQL and WebServer of your Choice
+-   Install Postman
 
 ### Installing
 
@@ -30,11 +30,15 @@ Install dependencies
 
 ```
 
-Create database in a local machine and edit env.example.js to env.js and edit your database credentials
+Connecting to the database
+
+-   Create database on your local server or create a remote one for free at [db4free](https://www.db4free.net 'db4free')
+-   Create .env file from .env.example
+-   Add your database information and you'll be set to go
 
 Then import Postman Collection Json file
 
-Then start local web server 
+Then start local web server
 
 ```
 # npm start
@@ -42,14 +46,13 @@ Then start local web server
 
 ## Built With
 
-* [ExpressJS](https://expressjs.com/) - The web framework used
-* [MySQL](https://dev.mysql.com/doc/) - Database Engine used
+-   [ExpressJS](https://expressjs.com/) - The web framework used
+-   [MySQL](https://dev.mysql.com/doc/) - Database Engine used
 
 ## Author
 
-* **Kelvin Shoo** - (https://github.com/wi11z)
+-   **Kelvin Shoo** - (https://github.com/wi11z)
 
 ## License
 
 This project is licensed under the Apache License - see the [LICENSE.md](LICENSE.md) file for details
-
