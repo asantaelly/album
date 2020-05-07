@@ -19,7 +19,7 @@ Things you need to install in order to run in your local development
 Clone the repo
 
 ```
-# git clone https://github.com/wi11z/creative_stock.git
+# git clone https://github.com/wi11z/album.git
 
 ```
 
@@ -48,10 +48,12 @@ Then start local web server
 
 -   [ExpressJS](https://expressjs.com/) - The web framework used
 -   [MySQL](https://dev.mysql.com/doc/) - Database Engine used
+-   [MongoDB](https://docs.mongodb.com/manual/) - MongoDB 
 
 ## Author
 
 -   **Kelvin Shoo** - (https://github.com/wi11z)
+-   **Christopher Shoo** - (https://github.com/L0rdCr1s)
 
 ## License
 
