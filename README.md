@@ -52,8 +52,8 @@ Then start local web server
 
 ## Author
 
--   **Kelvin Shoo** - (https://github.com/wi11z)
--   **Christopher Shoo** - (https://github.com/L0rdCr1s)
+-   [Kelvin Shoo](https://github.com/wi11z)
+-   [Christopher Shoo](https://github.com/L0rdCr1s)
 
 ## License
 
