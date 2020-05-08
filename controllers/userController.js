@@ -1,7 +1,6 @@
 const connection = require('../database/mysql')
 const jwt = require('jsonwebtoken')
 const User = require('../models/User')
-const time = new Date()
 
 /**
  *  User registration form
@@ -20,8 +19,8 @@ exports.user_registration = async (req, res) => {
 		name: req.body.name,
 		email: req.body.email,
 		password: req.body.password,
-		created_at: time,
-		update_at: time,
+		created_at: Date.now(),
+		updated_at: Date.now(),
 	})
 
 	try {
@@ -52,27 +51,26 @@ exports.get_user = async (req, res) => {
  *  Edit user instance
  *
  */
-exports.edit_user = (req, res) => {
+exports.edit_user = async (req, res) => {
 	let user_id = req.params.userID
-	let userCredentials = {
+	let userData = {
 		name: req.body.name,
 		email: req.body.email,
-		updated_at: time,
+		updated_at: Date.now(),
 	}
 
-	let edit_query = 'UPDATE users SET ? WHERE id = ?'
-	connection.query(edit_query, [userCredentials, user_id], (err, rows) => {
-		if (err) return console.log(err)
-
-		return res.json({
-			Message: 'User updated successfully',
-			User: rows,
-		})
-	})
+	try {
+		const user = await User.findByIdAndUpdate(user_id, userData, {new:true})
+		res.json({ success: true, user: user})
+	} catch (error) {
+		res.json({success: false, message: error})
+	}
 }
 
+
+
 /**
- *   Authenticate a user
+ *   Authenticate user
  */
 exports.user_login = (req, res) => {
 	let token = null
