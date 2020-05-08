@@ -1,4 +1,5 @@
 const connection = require('../database/mysql')
+const Image = require('../models/Image')
 var time = new Date()
 
 /**
@@ -34,33 +35,30 @@ exports.show_image = (req, res) => {
 /**
  *  Store image
  */
-exports.post_image = (req, res) => {
+exports.post_image = async (req, res) => {
 	if (!req.file) {
 		return res.json({
+			success: false,
 			Message: 'No file uploaded',
 		})
 	}
 
-	let picha = req.file
-	let photoDetails = {
+	let image_file = req.file
+	let imageData =new Image({
 		description: req.body.description,
-		photo: 'public/images/uploads/' + picha.originalname,
-		user_id: 1, // ID of user logged in and uploaded the particular picha will go here
-		created_at: time,
-		updated_at: time,
+		photo: 'public/images/uploads/' + image_file.originalname,
+		user_id: '5eb562edcfa1cc12c5c844eb', // ID of user logged in and uploaded the particular picha will go here
+		created_at: Date.now(),
+		updated_at: Date.now(),
+	})
+
+	try {
+		const image = await imageData.save()
+		res.json({ success: true, image: image})
+	} catch(error){
+		res.json({success: false, message: error})
 	}
 
-	let query_string = 'INSERT INTO photos SET ?'
-	connection.query(query_string, [photoDetails], (err) => {
-		if (err) {
-			return console.log(err)
-		}
-
-		return res.json({
-			Message: 'Photo uploaded successfully',
-			Photo: photoDetails,
-		})
-	})
 }
 
 /**
