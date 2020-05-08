@@ -73,41 +73,5 @@ exports.edit_user = async (req, res) => {
  *   Authenticate user
  */
 exports.user_login = (req, res) => {
-	let token = null
-	let userData = {
-		id: null,
-		email: req.body.email,
-		password: req.body.password,
-	}
 
-	let query_string = 'SELECT * FROM graphers WHERE email = ? AND password = ?'
-	connection.query(
-		query_string,
-		[userData.email, userData.password],
-		(err, rows) => {
-			if (err) {
-				throw err
-			} else {
-				if (rows.length > 0) {
-					let auth_data = {
-						id: rows[0].id,
-						first_name: rows[0].first_name,
-						last_name: rows[0].last_name,
-						email: rows[0].email,
-					}
-
-					token = jwt.sign(auth_data, 'secretKey', {
-						expiresIn: 60 * 60,
-					})
-					res.json({
-						token,
-					})
-				} else {
-					res.json({
-						message: 'Email or Password is not recognized!',
-					})
-				}
-			} //  end else
-		}
-	)
 }
