@@ -18,17 +18,15 @@ exports.show_images = async (req, res) => {
 /**
  *  Return only one image
  */
-exports.show_image = (req, res) => {
+exports.show_image = async (req, res) => {
 	let photo_id = req.params.photoID
 
-	let fetch_query = 'SELECT * FROM photos WHERE id = ?'
-	connection.query(fetch_query, [photo_id], (err, rows) => {
-		if (err) return console.log(err)
-
-		return res.json({
-			photo: rows,
-		})
-	})
+	try{
+		const image = await Image.findById(photo_id)
+		res.json({ success: true, image: image})
+	} catch(error){
+		res.json({success: false, message: error})
+	}
 }
 
 /**
