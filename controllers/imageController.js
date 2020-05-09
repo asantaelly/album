@@ -5,15 +5,14 @@ var time = new Date()
 /**
  *  Return all images
  */
-exports.show_images = (req, res) => {
-	let query_string = 'SELECT * FROM photos'
-	connection.query(query_string, (err, rows) => {
-		if (err) return console.log(err)
+exports.show_images = async (req, res) => {
 
-		return res.json({
-			photos: rows,
-		})
-	})
+	try{
+		const images = await Image.find()
+		res.json({success: true, images: images})
+	} catch(error){
+		res.json({success: false, message: error})
+	}
 }
 
 /**
