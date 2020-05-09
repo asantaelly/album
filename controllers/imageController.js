@@ -61,37 +61,31 @@ exports.post_image = async (req, res) => {
 /**
  *  Delete an image
  */
-exports.delete_image = (req, res) => {
+exports.delete_image = async (req, res) => {
 	let photo_id = req.params.photoID
 
-	let delete_query = 'DELETE FROM photos WHERE id = ?'
-	connection.query(delete_query, [photo_id], (err, rows) => {
-		if (err) return console.log(err)
-
-		return res.json({
-			Message: 'Photo deleted successfully',
-			Photo: rows,
-		})
-	})
+	try{
+		const image = await Image.findByIdAndDelete(photo_id)
+		res.json({success: true, image: image})
+	} catch(error) {
+		res.json({success: false, message: error})
+	}
 }
 
 /**
  *  Editing an image
  */
-exports.update_image = (req, res) => {
+exports.update_image = async (req, res) => {
 	let photo_id = req.params.photoID
-	let photoDetails = {
+	let photoData = {
 		description: req.body.description,
-		updated_at: time,
+		updated_at: Date.now(),
 	}
 
-	let update_query = 'UPDATE photos SET ? WHERE id = ?'
-	connection.query(update_query, [photoDetails, photo_id], (err, rows) => {
-		if (err) return console.log(err)
-
-		return res.json({
-			Message: 'Photo updated successfully',
-			photo: rows,
-		})
-	})
+	try {
+		const image = await Image.findByIdAndUpdate(photo_id, photoData, {new:true})
+		res.json({success: true, image: image})
+	} catch(error){
+		res.json({success: false, message: error})
+	}
 }
