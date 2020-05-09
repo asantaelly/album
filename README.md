@@ -2,18 +2,6 @@
 
 A photo stock web application implemented in ExpressJS.
 
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
-
-### Prerequisites
-
-Things you need to install in order to run in your local development
-
--   Install NodeJS
--   Install MySQL and WebServer of your Choice
--   Install Postman
-
 ### Installing
 
 Clone the repo
@@ -32,9 +20,15 @@ Install dependencies
 
 Connecting to the database
 
+-   Setup Mongodb on your local server or create a test mongodb at [Mlab](https://mlab.com/)
+-   Then edit .env.example to .env
+-   Add your connection string to .env
+
+Support for MySQL will be removed
+
 -   Create database on your local server or create a remote one for free at [db4free](https://www.db4free.net 'db4free')
 -   Create .env file from .env.example
--   Add your database information and you'll be set to go
+-   Add your database information and you'll be set to go 
 
 Then import Postman Collection Json file
 
@@ -47,8 +41,7 @@ Then start local web server
 ## Built With
 
 -   [ExpressJS](https://expressjs.com/) - The web framework used
--   [MySQL](https://dev.mysql.com/doc/) - Database Engine used
--   [MongoDB](https://docs.mongodb.com/manual/) - MongoDB 
+-   [MongoDB](https://docs.mongodb.com/manual/) - Database Engine used
 
 ## Author
 
