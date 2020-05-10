@@ -1,6 +1,7 @@
 const connection = require('../database/mysql')
 const jwt = require('jsonwebtoken')
 const User = require('../models/User')
+const password = require('../utils/password')
 
 /**
  *  User registration form
@@ -15,10 +16,14 @@ exports.registration_form = (req, res) => {
  *  Store new user to the database
  */
 exports.user_registration = async (req, res) => {
+
+	// Validation should be conducted
+	// ....
+
 	const userData = new User({
 		name: req.body.name,
 		email: req.body.email,
-		password: req.body.password,
+		password:  await password.encrypting(req.body.password),
 		created_at: Date.now(),
 		updated_at: Date.now(),
 	})
