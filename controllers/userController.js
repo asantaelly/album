@@ -1,4 +1,3 @@
-const connection = require('../database/mysql')
 const jwt = require('jsonwebtoken')
 const User = require('../models/User')
 const password = require('../utils/password')

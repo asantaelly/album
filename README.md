@@ -24,12 +24,6 @@ Connecting to the database
 -   Then edit .env.example to .env
 -   Add your connection string to .env
 
-Support for MySQL will be removed
-
--   Create database on your local server or create a remote one for free at [db4free](https://www.db4free.net 'db4free')
--   Create .env file from .env.example
--   Add your database information and you'll be set to go 
-
 Then import Postman Collection Json file
 
 Then start local web server

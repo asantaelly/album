@@ -1,4 +1,3 @@
-const connection = require('../database/mysql')
 const Image = require('../models/Image')
 var time = new Date()
 
