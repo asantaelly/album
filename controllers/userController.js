@@ -1,6 +1,6 @@
-const jwt = require('jsonwebtoken')
 const User = require('../models/User')
 const password = require('../utils/password')
+const { validationResult } = require('express-validator')
 
 /**
  *  User registration form
@@ -16,8 +16,11 @@ exports.registration_form = (req, res) => {
  */
 exports.user_registration = async (req, res) => {
 
-	// Validation should be conducted
-	// ....
+	// Performing validation
+	const errors = validationResult(req)
+	if(!errors.isEmpty()) {
+		return res.status(422).json({errors: errors.array() })
+	}
 
 	const userData = new User({
 		name: req.body.name,
