@@ -16,19 +16,26 @@ exports.registration_form = (req, res) => {
  */
 exports.user_registration = [
 
-		// Checking 
+		// Perfoming validation 
 		check('name')
 		.isLength({min: 1})
 		.withMessage('Name field is required.'),
+
 		check('email').isEmail()
-		.withMessage('Valid email is required.'),
+		.withMessage('Valid email is required.').custom(async (email) => {
+			user = await User.findOne({email: email})
+			if(user){
+				throw new Error('Email already exists!.')
+			}
+		}),
+
 		check('password').isLength({min: 8})
 		.withMessage('Password must contain atleast 8 characters.'),
 
 
 		async (req, res) => {
 
-			// Performing validation
+			// Checking for validation errors
 			const errors = validationResult(req)
 			if(!errors.isEmpty()) {
 				return res.status(422).json({errors: errors.array() })
