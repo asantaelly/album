@@ -13,7 +13,7 @@
 		"dotenv": "^8.2.0",
 		"express": "~4.16.1",
 		"express-fileupload": "^1.1.9",
-		"express-handlebars": "^4.0.3",
+		"express-handlebars": "^5.3.1",
 		"express-validator": "^6.5.0",
 		"http-errors": "~1.6.3",
 		"imagemagick": "^0.1.3",
